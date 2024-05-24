@@ -1,0 +1,18 @@
+{
+  "version": "1.0.0",
+  "main": "script.js",
+  "scripts": {
+    "start": "node script.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "daddy-jokes": "^1.0.8",
+    "express": "^4.19.2",
+    "figlet": "^1.7.0",
+    "nodemon": "^3.1.0"
+  },
+  "name": "learn-what-matter-node",
+  "devDependencies": {},
+  "description": ""
+}
