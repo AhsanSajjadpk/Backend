@@ -13,14 +13,39 @@ app.use((req,res,next)=>{
     console.log('Run before route - 2nd Middleware ')
     next();
 })
+// -----------------------------------------------------------
+// EJS SETUP
+// npm i ejs
+// code
+app.set("view engine","ejs");
+// views folder
+//views/file.ejs
+//res.render('file')
+// -----------------------------------------------------------
+
+
+// -----------------------------------------------------------
+// Static Files ===============
+// Create folder public
+// code
+app.use(express.static('./public'));
+// views folder
+//views/file.ejs
+//res.render('file')
+// -----------------------------------------------------------
+
 
 // Dynamic Routing
 app.get('/', (req, res) => {
-  res.send('Hello Home Page!')
+  res.render("home");
 })
+// -----------------------------------------------------------
+
 app.get('/profile', (req, res) => {
-    res.send('Hello From Profile!')
+    // Dynamic Changing
+    res.render('profile',{name : "AHSAN SAJJAD"})
   })
+// -----------------------------------------------------------
 
 app.get('/profile/ahsan', (req, res) => {
     res.send('Hello Ahsan!')
