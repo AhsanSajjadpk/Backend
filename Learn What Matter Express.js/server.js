@@ -14,7 +14,7 @@ app.use((req,res,next)=>{
     next();
 })
 // -----------------------------------------------------------
-// EJS SETUP
+// EJS SETUP ====================
 // npm i ejs
 // code
 app.set("view engine","ejs");
@@ -46,6 +46,10 @@ app.get('/profile', (req, res) => {
     res.render('profile',{name : "AHSAN SAJJAD"})
   })
 // -----------------------------------------------------------
+app.get('/error', (req, res,next) => {
+  throw Error("Something went wrong")
+})
+
 
 app.get('/profile/ahsan', (req, res) => {
     res.send('Hello Ahsan!')
@@ -58,6 +62,18 @@ app.get('/profile/ahsan', (req, res) => {
   })
 
 
+  // Error Handling ==== ==========
+
+  app.use(function errorHandler (err, req, res, next) {
+    if (res.headersSent) {
+      return next(err)
+    }
+    res.status(500)
+    // err is the error which we was thrown from error route
+    res.render('error', { error: err })
+  })
+
+//================================================
 app.listen(port, () => {
   console.log(`Example app listening on port ${port}`)
 })
